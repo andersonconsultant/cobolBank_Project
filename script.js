@@ -7,6 +7,10 @@ const initCobol = document.getElementById('buttonStartCobol');
 initCobol.addEventListener('click', () => {
   fetch('/api/cobol')
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+      console.log(data);
+      const cobolOutput = data.cobolOutput;
+      console.log(cobolOutput);
+    })
     .catch(error => console.error(error));
 });
