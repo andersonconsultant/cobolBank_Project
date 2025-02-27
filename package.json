@@ -1,11 +1,11 @@
 {
   "name": "fulljavascript",
   "version": "1.0.0",
-  "main": "script.js",
+  "main": "client/script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-  "start": "node api/cobol/index.js",
-  "pm2:start": "pm2 start api/cobol/index.js"
+  "start": "node api/index.js",
+  "pm2:start": "pm2 start api/index.js"
   },
   "author": "",
   "license": "ISC",
