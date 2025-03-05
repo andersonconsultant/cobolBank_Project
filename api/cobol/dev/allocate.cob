@@ -42,13 +42,14 @@
        
       *> Variáveis de aplicação
        01 APPLICATION-DATA.
-           05 WS-USER                PIC X(50) VALUE SPACES..
-           05 WS-SQL-CONN-STR  PIC X(256) 
+           05 WS-USER                PIC X(50) VALUE SPACES.
+           05 WS-SQL-CONN-STR        PIC X(256) 
                VALUE "DSN=cobolbd;ClientEncoding=UTF8;SSLmode=disable".
            05 WS-SQL-CONN-STR-LEN    PIC S9(9) COMP VALUE 256.
-           05 WS-QUERY PIC X(51) VALUE "SELECT get_usr();".
+           05 WS-QUERY               PIC X(51) VALUE "SELECT get_usr();".
+           05 WS-USER-BUFFER         POINTER VALUE NULL.
+           05 WS-USER-BUFFER-LEN     PIC S9(9) COMP VALUE 50.
 
-       
        PROCEDURE DIVISION.
        MAIN-PROCEDURE.
            PERFORM 1000-INICIAR
@@ -69,7 +70,7 @@
                BY REFERENCE hEnv
                GIVING SQLRC
            
-           IF SQLRC NOT = 0
+           IF SQLRC NOT = 0 THEN
                DISPLAY "ERRO: Falha ao criar ambiente ODBC (" SQLRC ")"
                PERFORM 9100-LIBERAR-RECURSOS
                STOP RUN
@@ -83,7 +84,7 @@
                BY VALUE 0
                GIVING SQLRC
            
-           IF SQLRC NOT = 0
+           IF SQLRC NOT = 0 THEN
                DISPLAY "ERRO: Versão ODBC não suportada (" SQLRC ")"
                PERFORM 9100-LIBERAR-RECURSOS
                STOP RUN
@@ -97,7 +98,7 @@
                BY REFERENCE hDbc
                GIVING SQLRC
            
-           IF SQLRC NOT = 0
+           IF SQLRC NOT = 0 THEN
                DISPLAY "ERRO: Falha ao alocar conexão (" SQLRC ")"
                PERFORM 9100-LIBERAR-RECURSOS
                STOP RUN
@@ -115,7 +116,7 @@
                BY VALUE SQL-DRIVER-NOPROMPT
                GIVING SQLRC
            
-           IF SQLRC NOT = 0
+           IF SQLRC NOT = 0 THEN
                PERFORM 9200-OBTER-ERRO
                DISPLAY "ERRO NA CONEXÃO: " SQL-STATE " - " ERROR-MSG
                PERFORM 9100-LIBERAR-RECURSOS
@@ -134,7 +135,7 @@
                BY REFERENCE hStmt
                GIVING SQLRC
            
-           IF SQLRC NOT = 0
+           IF SQLRC NOT = 0 THEN
                DISPLAY "ERRO: Falha ao criar statement (" SQLRC ")"
                PERFORM 9100-LIBERAR-RECURSOS
                STOP RUN
@@ -152,7 +153,7 @@
                GIVING SQLRC
            END-CALL
 
-           IF SQLRC NOT = 0
+           IF SQLRC NOT = 0 THEN
                PERFORM 9200-OBTER-ERRO
                DISPLAY "ERRO NO PREPARE: " SQL-STATE " - " ERROR-MSG
                PERFORM 9100-LIBERAR-RECURSOS
@@ -170,7 +171,7 @@
                GIVING SQLRC
            END-CALL
 
-           IF SQLRC NOT = 0
+           IF SQLRC NOT = 0 THEN
                PERFORM 9200-OBTER-ERRO
                DISPLAY "ERRO NA EXECUÇÃO: " SQL-STATE " - " ERROR-MSG
                PERFORM 9100-LIBERAR-RECURSOS
@@ -179,19 +180,38 @@
                DISPLAY "Query executada com sucesso!"
            END-IF.
 
-                3200-PROCESSAR-RESULTADOS.
+       3200-PROCESSAR-RESULTADOS.
            DISPLAY "Processando resultados..."
+           MOVE 0 TO SQLRC *> Inicializa SQLRC para evitar lixo na memória
            
+           *> Aloca memória para o buffer de usuário
+           CALL "CBL_ALLOC_MEM" USING
+               BY VALUE WS-USER-BUFFER-LEN
+               BY REFERENCE WS-USER-BUFFER
+               GIVING SQLRC
+           IF SQLRC NOT = 0 THEN
+               DISPLAY "ERRO: Falha ao alocar memória para o buffer de usuário (" SQLRC ")"
+               PERFORM 9100-LIBERAR-RECURSOS
+               STOP RUN
+           END-IF
+
            *> Buscar o primeiro registro do resultado
            PERFORM 3210-FETCH-DATA
            UNTIL SQLRC = 100. *>UNTIL SQLRC NOT = 0.
 
        3210-FETCH-DATA.
+           *> Verifica se hStmt é válido antes de chamar SQLFetch
+           IF hStmt = NULL THEN
+               DISPLAY "ERRO: Handle de statement inválido!"
+               PERFORM 9100-LIBERAR-RECURSOS
+               STOP RUN
+           END-IF
+       
            CALL "SQLFetch" USING
                BY VALUE hStmt
                GIVING SQLRC
            END-CALL
-
+       
            EVALUATE SQLRC
                WHEN 0
                    PERFORM 3220-OBTEM-DADOS
@@ -203,6 +223,7 @@
                    PERFORM 9100-LIBERAR-RECURSOS
                    STOP RUN
            END-EVALUATE.
+       
 
        3220-OBTEM-DADOS.
            *> Obter dados da coluna 1 (current_user)
@@ -210,13 +231,13 @@
                BY VALUE hStmt
                BY VALUE 1
                BY VALUE 1          *> SQL_C_CHAR
-               BY REFERENCE WS-USER
-               BY VALUE 50
+               BY REFERENCE WS-USER-BUFFER
+               BY VALUE WS-USER-BUFFER-LEN
                GIVING SQLRC
            END-CALL
 
-           IF SQLRC = 0
-               DISPLAY "Usuário atual: " WS-USER
+           IF SQLRC = 0 THEN
+               DISPLAY "Usuário atual: " WS-USER-BUFFER
            ELSE
                DISPLAY "ERRO AO LER DADOS (" SQLRC ")"
            END-IF.
@@ -227,14 +248,14 @@
            PERFORM 9100-LIBERAR-RECURSOS.
 
        9100-LIBERAR-RECURSOS.
-           IF hStmt NOT = NULL
+           IF hStmt NOT = NULL THEN
                CALL "SQLFreeHandle" USING
                    BY VALUE SQL-HANDLE-STMT
                    BY VALUE hStmt
                END-CALL
            END-IF
            
-           IF hDbc NOT = NULL
+           IF hDbc NOT = NULL THEN
                CALL "SQLDisconnect" USING BY VALUE hDbc
                CALL "SQLFreeHandle" USING
                    BY VALUE SQL-HANDLE-DBC
@@ -243,12 +264,19 @@
                MOVE NULL TO hDbc
            END-IF
            
-           IF hEnv NOT = NULL
+           IF hEnv NOT = NULL THEN
                CALL "SQLFreeHandle" USING
                    BY VALUE SQL-HANDLE-ENV
                    BY VALUE hEnv
                END-CALL
                MOVE NULL TO hEnv
+           END-IF
+
+           *> Libera memória alocada para o buffer de usuário
+           IF WS-USER-BUFFER NOT = NULL THEN
+               CALL "CBL_FREE_MEM" USING
+                   BY REFERENCE WS-USER-BUFFER
+               END-CALL
            END-IF.
 
        9200-OBTER-ERRO.
