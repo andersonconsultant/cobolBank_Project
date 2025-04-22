@@ -4,31 +4,34 @@
   },
   "directories": {
     "rules": {
-      "cobol": "/srv/cb_Project/Rules/api/cobol"
+      "cobol": "Rules/api/cobol"
     }
   },
   "paths": {
     "client": {
-      "root": "../../client",
-      "styles": "../../client/styles",
-      "images": "../../client/images",
-      "fonts": "../../client/fonts",
+      "root": "client",
+      "styles": "client/styles",
+      "images": "client/images",
+      "fonts": "client/fonts",
       "html": {
-        "index": "../../client/index.html"
+        "index": "client/index.html"
       }
     },
     "cobol": {
-      "root": "/srv/cb_Project/Rules/api/cobol",
+      "root": "Rules/api/cobol",
       "programs": {
-        "start": "/srv/cb_Project/Rules/api/cobol/start",
-        "login": "/srv/cb_Project/Rules/api/cobol/login",
-        "transaction": "/srv/cb_Project/Rules/api/cobol/transaction"
+        "start": "Rules/api/cobol/start",
+        "login": "Rules/api/cobol/login",
+        "transaction": "Rules/api/cobol/transaction"
       }
     },
     "logs": {
       "app": "/log/api-out.log",
       "error": "/log/api-error.log",
       "cobol": "/log/cobol.log"
+    },
+    "api": {
+      "root": "Rules/api"
     }
   },
   "endpoints": {
@@ -49,7 +52,6 @@
   "server": {
     "port": 3000,
     "host": "0.0.0.0",
-    "baseUrl": "/api/v1",
     "cors": {
       "origin": "*",
       "methods": ["GET", "POST", "PUT", "DELETE"],

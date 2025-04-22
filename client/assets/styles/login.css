@@ -1,0 +1,100 @@
+.login-container {
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.login-container .card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.login-container .card-header {
+    background-color: #0077b6;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    padding: 1.5rem;
+}
+
+.login-container .card-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.login-container .card-body {
+    padding: 2rem;
+}
+
+.login-container .form-group label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.login-container .form-control {
+    border-radius: 4px;
+    border: 1px solid #ced4da;
+    padding: 0.75rem;
+    transition: border-color 0.15s ease-in-out;
+}
+
+.login-container .form-control:focus {
+    border-color: #0077b6;
+    box-shadow: 0 0 0 0.2rem rgba(0, 119, 182, 0.25);
+}
+
+.login-container .btn-primary {
+    background-color: #0077b6;
+    border-color: #0077b6;
+    padding: 0.75rem;
+    font-weight: 500;
+    transition: all 0.15s ease-in-out;
+}
+
+.login-container .btn-primary:hover {
+    background-color: #005f92;
+    border-color: #005f92;
+}
+
+.login-container .btn-primary:disabled {
+    background-color: #ccc;
+    border-color: #ccc;
+    cursor: not-allowed;
+}
+
+.login-container #forgotPassword {
+    color: #0077b6;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.15s ease-in-out;
+}
+
+.login-container #forgotPassword:hover {
+    color: #005f92;
+    text-decoration: underline;
+}
+
+.login-container .alert {
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+}
+
+.login-container .invalid-feedback {
+    font-size: 0.875rem;
+    color: #dc3545;
+    margin-top: 0.25rem;
+}
+
+/* Animações */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+    20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+.login-container .alert-danger:not(.d-none) {
+    animation: shake 0.6s ease-in-out;
+} 

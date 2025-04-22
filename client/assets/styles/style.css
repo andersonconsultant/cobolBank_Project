@@ -1,0 +1,240 @@
+/* Estilos globais */
+body {
+  font-family: 'Arimo', sans-serif;
+  background-color: #f8f9fa;
+}
+
+h1 {
+  color: #00698f;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #0077b6;
+  padding: 20px;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.sidebar-header img {
+  max-width: 150px;
+  height: auto;
+}
+
+/* Ajuste do nav para compensar o padding do sidebar */
+.sidebar nav.row {
+  margin-left: -20px;
+  margin-right: -20px;
+  width: calc(100% + 40px);
+  --bs-gutter-x: 0 !important;
+  --bs-gutter-y: 0 !important;
+}
+
+/* Botão da Sidebar */
+.sidebar-button {
+  color: #ffffff;
+  padding: 12px 20px;
+  margin: 0;
+  border-radius: 0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  box-sizing: border-box;
+  text-align: left;
+  border: none;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+}
+
+.sidebar-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../images/buttons/back_button_over_200px.png');
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.sidebar-button:hover::before {
+  opacity: 1;
+}
+
+.sidebar-button:hover {
+  color: #ffffff;
+  /* text-shadow: 
+    0 0 3px rgba(255, 255, 255, 0.5),
+    0 0 5px rgba(255, 255, 255, 0.5),
+    0 0 10px rgba(255, 255, 255, 0.5); */
+}
+
+.sidebar-button .row {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.sidebar-button .col-auto {
+  padding-right: 10px;
+  flex-shrink: 0;
+}
+
+.sidebar-button .col {
+  padding-left: 0;
+  flex-grow: 1;
+}
+
+.sidebar-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Conteúdo principal */
+.content-central {
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.page-container {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  min-height: calc(100vh - 40px);
+}
+
+/* Cards do Dashboard */
+.dashboard .card {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.dashboard .card:hover {
+  transform: translateY(-5px);
+}
+
+/* Formulários */
+.transfer-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-control {
+  border-radius: 0;
+  padding: 0.75rem;
+}
+
+.btn-primary {
+  background-color: #0077b6;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  border-radius: 0;
+}
+
+.btn-primary:hover {
+  background-color: #005b8c;
+}
+
+/* Tabela de extrato */
+.statement-container {
+  overflow-x: auto;
+}
+
+.table {
+  margin-top: 1rem;
+}
+
+.table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+/* Perfil */
+.profile-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.profile-info p {
+  margin-bottom: 1rem;
+}
+
+.profile-info strong {
+  color: #0077b6;
+}
+
+/* Mensagens de erro */
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  color: #dc3545;
+}
+
+.iconButton {
+  margin-left: 0px;
+  max-width: 40px;
+  height: 25px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    min-height: auto;
+  }
+  
+  .content-central {
+    padding: 15px;
+  }
+  
+  .page-container {
+    min-height: auto;
+  }
+
+  .sidebar-button {
+    padding: 10px 20px;
+  }
+}
+
+/* Breakpoints específicos para melhor responsividade */
+@media (min-width: 768px) and (max-width: 991px) {
+  .sidebar {
+    width: 220px;
+  }
+  
+  .content-central {
+    margin-left: 220px;
+  }
+}
+
+@media (min-width: 992px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .content-central {
+    margin-left: 200px;
+  }
+}
+
+

@@ -1,34 +1,80 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cobol Bank</title>
-  <link rel="stylesheet" href="styles/style.css">
-  <link rel="stylesheet" href="styles/fonts.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema Bancário CobolBank - Interface moderna para operações bancárias">
+    <title>CobolBank - Sistema Bancário</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Nossos estilos -->
+    <link rel="stylesheet" href="assets/styles/fonts.css">
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/login.css">
+    <link rel="stylesheet" href="assets/styles/components.css">
 </head>
-<body>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="sidebar arimo-regular">
-        <img src="images/logov1.png" alt="Logo" class="iconLogo">
-        <button class="sidebar-button" id="botao-click">
-          <img src="images/buttons/icon1Visao.png" alt="Operações e gestão de pagamentos" class="iconButton">Visão Geral
-        </button>
-        <button class="sidebar-button" id="buttonStartCobol">
-          <img src="images/buttons/icon1Money.png" alt="Operações e gestão de pagamentos" class="iconButton">Pagamentos
-        </button>
-        <button class="sidebar-button" id="buttonStartCobol">
-          <img src="images/buttons/icon1History.png" alt="Visualização histórica de transações" class="iconButton">Histórico
-        </button>
-      </div>
-      <div class="col content-central">
-        <h3>Carteira</h3>
-        <p>Cartões</p>
-      </div>
+<body class="vh-100">
+    <div class="container-fluid px-0 h-100">
+        <div class="row g-0 h-100">
+            <!-- Sidebar com collapse em mobile -->
+            <aside class="col-12 col-md-3 col-lg-2 sidebar position-fixed d-none" id="sidebar">
+                <div class="sidebar-header text-center mb-4">
+                    <img src="assets/images/logo/logov1.png" alt="Logo CobolBank" class="img-fluid">
+                </div>
+                <nav class="row">
+                    <div class="col-12">
+                        <button class="sidebar-button w-100" data-page="Visao Geral">
+                            <div class="row align-items-center g-0">
+                                <div class="col-auto">
+                                    <img src="assets/images/buttons/icon1Visao.png" alt="Visao Geral" class="iconButton">
+                                </div>
+                                <div class="col">
+                                    <span>Visão Geral</span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="col-12">
+                        <button class="sidebar-button w-100" data-page="transfer">
+                            <div class="row align-items-center g-0">
+                                <div class="col-auto">
+                                    <img src="assets/images/buttons/icon1Money.png" alt="Transferências" class="iconButton">
+                                </div>
+                                <div class="col">
+                                    <span>Transferências</span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                    <div class="col-12">
+                        <button class="sidebar-button w-100" data-page="history">
+                            <div class="row align-items-center g-0">
+                                <div class="col-auto">
+                                    <img src="assets/images/buttons/icon1History.png" alt="Histórico" class="iconButton">
+                                </div>
+                                <div class="col">
+                                    <span>Histórico</span>
+                                </div>
+                            </div>
+                        </button>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Conteúdo principal -->
+            <main class="col-12 col-md-9 col-lg-10 content-central">
+                <div id="pageContainer">
+                    <!-- Conteúdo dinâmico será carregado aqui -->
+                </div>
+            </main>
+        </div>
     </div>
-  </div>
-  <script src="script.js"></script>
+
+    <!-- Bootstrap Bundle com Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Nossos scripts -->
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>

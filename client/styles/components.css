@@ -1,0 +1,104 @@
+/* Transfer Component Styles */
+.transfer-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.transfer-type-buttons {
+    margin-bottom: 2rem;
+}
+
+.transfer-type-buttons .btn {
+    min-width: 120px;
+    margin-right: 1rem;
+}
+
+.transfer-form {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transfer-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* History Component Styles */
+.history-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.transaction-list {
+    margin-top: 1.5rem;
+}
+
+.transaction-item {
+    padding: 1rem;
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s ease;
+}
+
+.transaction-item:hover {
+    background-color: #f8f9fa;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+}
+
+.transaction-icon.incoming {
+    background-color: #e7f5ea;
+    color: #28a745;
+}
+
+.transaction-icon.outgoing {
+    background-color: #fbe9e7;
+    color: #dc3545;
+}
+
+.transaction-info h6 {
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.transaction-amount {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .transfer-container,
+    .history-container {
+        padding: 10px;
+    }
+
+    .transfer-type-buttons .btn {
+        margin-bottom: 0.5rem;
+        width: 100%;
+    }
+
+    .transaction-item {
+        padding: 0.75rem;
+    }
+
+    .transaction-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
+    }
+} 
