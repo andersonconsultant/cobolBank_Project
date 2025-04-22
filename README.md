@@ -49,16 +49,16 @@ Access your modernized system:
 
 ## About the Developer
 
-Anderson is a digital transformation specialist focused on solving the biggest technical challenge companies face: modernizing critical legacy systems. With deep expertise in both COBOL and modern web technologies, he creates innovative solutions that:
+Anderson specializes in digital transformation with a focus on legacy system modernization. His background combines COBOL expertise with modern web development, enabling him to:
 
-- Preserve vital business rules coded in legacy systems
-- Integrate old applications with modern technology ecosystems
-- Dramatically reduce operational costs and maintenance risks
-- Avoid costly and risky complete system rewrites
+- Bridge critical business logic from legacy systems to modern platforms
+- Create integration pathways between established systems and new technologies
+- Optimize operational efficiency while reducing maintenance overhead
+- Implement incremental modernization strategies that minimize business risk
 
-## Let's Connect
+## Connect
 
-If your organization is struggling with legacy system integration, let's talk about how this approach can help you modernize without risk.
+For discussions on legacy system integration approaches:
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Anderson%20Silva-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/andersonsilva-ds/)
 [![GitHub](https://img.shields.io/badge/GitHub-andersonsilva--dev-181717?style=flat&logo=github)](https://github.com/andersonsilva-dev)
@@ -111,16 +111,16 @@ Acesse seu sistema modernizado:
 
 ## Sobre o Desenvolvedor
 
-Anderson é um especialista em transformação digital focado em resolver o maior desafio técnico que as empresas enfrentam: a modernização de sistemas legados críticos. Com profunda expertise em COBOL e tecnologias web modernas, ele cria soluções inovadoras que:
+Anderson atua na área de transformação digital com foco em modernização de sistemas legados. Sua formação combina expertise em COBOL com desenvolvimento web moderno, permitindo:
 
-- Preservam regras de negócio vitais codificadas em sistemas legados
-- Integram aplicações antigas com ecossistemas tecnológicos modernos
-- Reduzem drasticamente custos operacionais e riscos de manutenção
-- Evitam a dispendiosa e arriscada reescrita total dos sistemas
+- Conectar lógica de negócios crítica de sistemas legados a plataformas modernas
+- Criar caminhos de integração entre sistemas estabelecidos e novas tecnologias
+- Otimizar a eficiência operacional enquanto reduz custos de manutenção
+- Implementar estratégias de modernização incremental que minimizam riscos aos negócios
 
-## Vamos Conectar
+## Contato
 
-Se sua organização está lutando com integração de sistemas legados, vamos conversar sobre como esta abordagem pode ajudá-lo a modernizar sem riscos.
+Para discussões sobre abordagens de integração de sistemas legados:
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Anderson%20Silva-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/andersonsilva-ds/)
 [![GitHub](https://img.shields.io/badge/GitHub-andersonsilva--dev-181717?style=flat&logo=github)](https://github.com/andersonsilva-dev)
