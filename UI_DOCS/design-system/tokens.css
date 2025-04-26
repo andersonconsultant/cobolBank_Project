@@ -1,0 +1,54 @@
+:root {
+  /* Colors */
+  --cb-primary: #0077b6;
+  --cb-primary-light: #0096c7;
+  --cb-primary-dark: #0066a0;
+  --cb-secondary: #6C757D;
+  --cb-success: #2cb556;
+  --cb-error: #dc3545;
+  --cb-warning: #ffc107;
+  --cb-info: #0dcaf0;
+  
+  /* Typography */
+  --cb-font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --cb-font-family-secondary: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* Font Sizes */
+  --cb-text-xs: 0.75rem;    /* 12px */
+  --cb-text-sm: 0.875rem;   /* 14px */
+  --cb-text-base: 1rem;     /* 16px */
+  --cb-text-lg: 1.125rem;   /* 18px */
+  --cb-text-xl: 1.25rem;    /* 20px */
+  
+  /* Spacing */
+  --cb-space-1: 0.25rem;    /* 4px */
+  --cb-space-2: 0.5rem;     /* 8px */
+  --cb-space-3: 0.75rem;    /* 12px */
+  --cb-space-4: 1rem;       /* 16px */
+  --cb-space-6: 1.5rem;     /* 24px */
+  --cb-space-8: 2rem;       /* 32px */
+  
+  /* Border Radius */
+  --cb-radius-sm: 0.25rem;  /* 4px */
+  --cb-radius-md: 0.375rem; /* 6px */
+  --cb-radius-lg: 0.5rem;   /* 8px */
+  --cb-radius-xl: 1rem;     /* 16px */
+  
+  /* Shadows */
+  --cb-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --cb-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --cb-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  
+  /* Z-index */
+  --cb-z-dropdown: 1000;
+  --cb-z-sticky: 1020;
+  --cb-z-modal: 1030;
+  --cb-z-toast: 1040;
+  
+  /* Transitions */
+  --cb-transition-base: 200ms ease-in-out;
+  --cb-transition-slow: 300ms ease-in-out;
+  
+  /* Focus */
+  --cb-focus-ring: 0 0 0 2px var(--cb-primary-light);
+} 

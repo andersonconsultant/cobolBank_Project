@@ -1,0 +1,48 @@
+/* Estilos base para tabelas */
+.table {
+  width: 100%;
+  margin-bottom: var(--cb-space-4);
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: var(--cb-space-3);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.table th {
+  font-family: var(--cb-font-family-secondary);
+  font-weight: 600;
+  color: var(--cb-primary);
+  background-color: rgba(0, 119, 182, 0.05);
+}
+
+.table tbody tr:hover {
+  background-color: rgba(0, 119, 182, 0.02);
+}
+
+/* Valores monetários */
+.text-success {
+  color: var(--cb-success) !important;
+}
+
+.text-danger {
+  color: var(--cb-error) !important;
+}
+
+/* Responsividade */
+.table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: var(--cb-space-4);
+}
+
+@media (max-width: 768px) {
+  .table th,
+  .table td {
+    padding: var(--cb-space-2);
+    font-size: var(--cb-text-sm);
+  }
+} 

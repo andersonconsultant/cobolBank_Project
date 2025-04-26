@@ -1,0 +1,6 @@
+                                           pg_get_constraintdef                                           
+----------------------------------------------------------------------------------------------------------
+ CHECK (((tipo)::text = ANY ((ARRAY['entrada'::character varying, 'saida'::character varying])::text[])))
+ CHECK (((tipo)::text = ANY ((ARRAY['entrada'::character varying, 'saida'::character varying])::text[])))
+(2 rows)
+

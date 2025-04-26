@@ -1,0 +1,43 @@
+/* Estilos base para cards */
+.card {
+  background: white;
+  border: none;
+  border-radius: var(--cb-radius-lg);
+  box-shadow: var(--cb-shadow-sm);
+  transition: var(--cb-transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--cb-shadow-md);
+}
+
+.card-body {
+  padding: var(--cb-space-4);
+}
+
+.card-title {
+  color: var(--cb-primary);
+  font-family: var(--cb-font-family-secondary);
+  font-size: var(--cb-text-lg);
+  font-weight: 600;
+  margin-bottom: var(--cb-space-4);
+}
+
+/* Card com elevação */
+.card-elevated {
+  box-shadow: var(--cb-shadow-md);
+}
+
+.card-elevated:hover {
+  box-shadow: var(--cb-shadow-lg);
+}
+
+/* Card com hover animation */
+.card-interactive {
+  cursor: pointer;
+  transition: transform var(--cb-transition-base);
+}
+
+.card-interactive:hover {
+  transform: translateY(-4px);
+} 

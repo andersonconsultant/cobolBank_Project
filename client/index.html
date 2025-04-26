@@ -4,77 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistema Bancário CobolBank - Interface moderna para operações bancárias">
-    <title>CobolBank - Sistema Bancário</title>
+    <title>CobolBank</title>
+    
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Nossos estilos -->
-    <link rel="stylesheet" href="assets/styles/fonts.css">
-    <link rel="stylesheet" href="assets/styles/style.css">
-    <link rel="stylesheet" href="assets/styles/login.css">
-    <link rel="stylesheet" href="assets/styles/components.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Design System Base -->
+    <link rel="stylesheet" href="assets/design-system/base/variables.css">
+    
+    <!-- Design System Layouts -->
+    <link rel="stylesheet" href="assets/design-system/layouts/base-layout.css">
+    <link rel="stylesheet" href="assets/design-system/layouts/sidebar.css">
+    
+    <!-- Design System Components -->
+    <link rel="stylesheet" href="assets/design-system/components/buttons.css">
+    <link rel="stylesheet" href="assets/design-system/components/forms.css">
+    <link rel="stylesheet" href="assets/design-system/components/modal.css">
+    
+    <!-- Design System Pages -->
+    <link rel="stylesheet" href="assets/design-system/pages/login.css">
+    <link rel="stylesheet" href="assets/design-system/pages/overview.css">
+    <link rel="stylesheet" href="assets/design-system/pages/transfer.css">
+    
+    <!-- Components Styles -->
+    <link rel="stylesheet" href="styles/components.css">
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
-<body class="vh-100">
-    <div class="container-fluid px-0 h-100">
-        <div class="row g-0 h-100">
-            <!-- Sidebar com collapse em mobile -->
-            <aside class="col-12 col-md-3 col-lg-2 sidebar position-fixed d-none" id="sidebar">
-                <div class="sidebar-header text-center mb-4">
-                    <img src="assets/images/logo/logov1.png" alt="Logo CobolBank" class="img-fluid">
-                </div>
-                <nav class="row">
-                    <div class="col-12">
-                        <button class="sidebar-button w-100" data-page="Visao Geral">
-                            <div class="row align-items-center g-0">
-                                <div class="col-auto">
-                                    <img src="assets/images/buttons/icon1Visao.png" alt="Visao Geral" class="iconButton">
-                                </div>
-                                <div class="col">
-                                    <span>Visão Geral</span>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                    <div class="col-12">
-                        <button class="sidebar-button w-100" data-page="transfer">
-                            <div class="row align-items-center g-0">
-                                <div class="col-auto">
-                                    <img src="assets/images/buttons/icon1Money.png" alt="Transferências" class="iconButton">
-                                </div>
-                                <div class="col">
-                                    <span>Transferências</span>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                    <div class="col-12">
-                        <button class="sidebar-button w-100" data-page="history">
-                            <div class="row align-items-center g-0">
-                                <div class="col-auto">
-                                    <img src="assets/images/buttons/icon1History.png" alt="Histórico" class="iconButton">
-                                </div>
-                                <div class="col">
-                                    <span>Histórico</span>
-                                </div>
-                            </div>
-                        </button>
-                    </div>
-                </nav>
-            </aside>
+<body>
+    <div class="app-layout">
+        <!-- Navegação Lateral -->
+        <nav class="app-nav">
+            <!-- A sidebar será injetada aqui dinamicamente -->
+        </nav>
 
-            <!-- Conteúdo principal -->
-            <main class="col-12 col-md-9 col-lg-10 content-central">
-                <div id="pageContainer">
-                    <!-- Conteúdo dinâmico será carregado aqui -->
-                </div>
-            </main>
-        </div>
+        <!-- Conteúdo Principal -->
+        <main class="app-main">
+            <div class="app-content" id="pageContainer">
+                <!-- Conteúdo dinâmico será carregado aqui -->
+            </div>
+        </main>
+
+        <!-- Overlay Mobile -->
+        <div class="app-overlay" id="mobileOverlay"></div>
     </div>
 
     <!-- Bootstrap Bundle com Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Nossos scripts -->
+    
+    <!-- Aplicação -->
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,300 @@
+/* Sidebar */
+.sidebar {
+    background-color: var(--primary-700);
+    padding: 0;
+    min-height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    color: var(--text-on-primary);
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    transition: transform var(--transition-normal),
+                width var(--transition-normal);
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
+}
+
+/* Header do Sidebar */
+.sidebar-header {
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--header-height);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--primary-800);
+}
+
+.sidebar-logo {
+    margin-top: var(--spacing-lg);
+    width: 166px;
+    height: 146px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-normal);
+}
+
+.sidebar-logo:hover {
+    transform: scale(1.05);
+}
+
+.sidebar-logo img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Esconde o título do sidebar */
+.sidebar-title {
+    display: none;
+}
+
+/* Navegação do Sidebar */
+.sidebar-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+    overflow-y: auto;
+}
+
+/* Item do Menu */
+.sidebar-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--text-on-primary);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    min-height: 48px;
+    gap: 12px;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Estado Hover com efeito de highlight */
+.sidebar-item:hover {
+    background-color: var(--primary-600);
+    color: var(--text-on-primary);
+}
+
+.sidebar-item:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+}
+
+/* Estado Ativo com indicador e gradiente */
+.sidebar-item.active {
+    background-color: var(--primary-500);
+    color: var(--text-on-primary);
+    position: relative;
+}
+
+.sidebar-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--primary-300);
+    box-shadow: 0 0 8px rgba(var(--primary-300-rgb), 0.5);
+}
+
+/* Container do Ícone com Font Awesome */
+.sidebar-item-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    font-size: 1.2rem;
+    color: var(--text-on-primary);
+    opacity: 0.9;
+}
+
+/* Remove as imagens de fundo específicas e usa Font Awesome */
+.menu-visao .sidebar-item-icon i {
+    color: var(--text-on-primary);
+}
+
+.menu-money .sidebar-item-icon i {
+    color: var(--text-on-primary);
+}
+
+.menu-history .sidebar-item-icon i {
+    color: var(--text-on-primary);
+}
+
+/* Efeitos de hover nos ícones */
+.sidebar-item:hover .sidebar-item-icon {
+    transform: translateY(-1px);
+    opacity: 1;
+}
+
+.sidebar-item.active .sidebar-item-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Texto do Item com efeito de transição */
+.sidebar-item-text {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-on-primary);
+    flex: 1;
+    transition: transform var(--transition-fast);
+}
+
+.sidebar-item:hover .sidebar-item-text {
+    transform: translateX(2px);
+}
+
+/* Footer do Sidebar */
+.sidebar-footer {
+    padding: 16px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Perfil do Usuário */
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background-color var(--transition-fast);
+    cursor: pointer;
+}
+
+.user-profile:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-on-primary);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-name {
+    color: var(--text-on-primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-role {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+/* Botão de Logout */
+.sidebar-logout {
+    margin-top: 16px;
+    border-radius: 8px;
+    background-color: rgba(220, 53, 69, 0.1);
+    transition: all var(--transition-fast);
+}
+
+.sidebar-logout:hover {
+    background-color: rgba(220, 53, 69, 0.2);
+}
+
+.sidebar-logout .sidebar-item-icon {
+    color: var(--danger);
+}
+
+.sidebar-logout:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.sidebar-logout:disabled:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .sidebar {
+        width: var(--sidebar-width-tablet);
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+}
+
+/* Animações */
+.sidebar-item:hover .sidebar-item-icon {
+    transform: scale(1.1);
+}
+
+/* Overlay para mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+@media (max-width: 768px) {
+    .sidebar-overlay {
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-normal),
+                    visibility var(--transition-normal);
+    }
+
+    .sidebar-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+} 

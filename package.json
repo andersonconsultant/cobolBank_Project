@@ -4,24 +4,33 @@
   "description": "Sistema bancário moderno com COBOL",
   "main": "index.js",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "cd Rules/api && npm run dev",
+    "start": "cd Rules/api && node index.js",
+    "start:integrated": "cd Rules/api && node index.js",
+    "start:backend": "cd Rules/api && PORT=3001 BACKEND_ONLY=true node index.js",
+    "start:frontend": "cd Rules && npm run dev",
+    "start:all": "node scripts/start.js",
+    "dev": "node scripts/dev.js",
+    "test:routes": "node scripts/test-routes.js",
+    "check-status": "node scripts/check-status.js",
     "build": "echo \"No build step yet\""
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "concurrently": "^8.0.1",
+    "cors": "^2.8.5",
     "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "express-rate-limit": "^7.5.0",
+    "express-validator": "^7.2.1",
+    "helmet": "^8.1.0"
   },
   "devDependencies": {
     "body-parser": "^1.20.2",
     "dotenv": "^16.0.3",
     "iconv-lite": "^0.6.3",
-    "pm2": "^5.4.3",
-    "uuid": "^9.0.0",
     "nodemon": "^3.1.9",
-    "serve": "^14.2.4"
+    "pm2": "^5.4.3",
+    "serve": "^14.2.4",
+    "uuid": "^9.0.0"
   }
 }

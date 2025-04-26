@@ -22,6 +22,9 @@ class AuthService {
         this.user = user;
         localStorage.setItem('token', token);
         localStorage.setItem('user', JSON.stringify(user));
+        
+        // Dispara evento de login
+        document.dispatchEvent(new CustomEvent('login'));
     }
 
     clearAuth() {
@@ -29,6 +32,9 @@ class AuthService {
         this.user = null;
         localStorage.removeItem('token');
         localStorage.removeItem('user');
+        
+        // Dispara evento de logout
+        document.dispatchEvent(new CustomEvent('logout'));
     }
 
     // Middleware para verificar autenticação
@@ -38,8 +44,8 @@ class AuthService {
         }
 
         try {
-            // Aqui você pode adicionar uma chamada para verificar se o token ainda é válido
-            // Por exemplo, fazendo uma requisição para /api/v1/auth/verify
+            // Aqui você pode adicionar uma chamada à API para validar o token
+            // Por enquanto, apenas verifica se existe um token
             return true;
         } catch (error) {
             this.clearAuth();

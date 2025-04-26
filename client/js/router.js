@@ -3,6 +3,7 @@ import Overview from '../components/Overview.js';
 import Transfer from '../components/Transfer.js';
 import History from '../components/History.js';
 import Login from '../components/Login.js';
+import NotFound from '../components/NotFound.js';
 import auth from '../services/auth.js';
 
 export default class Router {
@@ -15,17 +16,17 @@ export default class Router {
             '/login': Login
         };
         
+        this.protectedRoutes = ['/', '/overview', '/transfer', '/history'];
         this.contentDiv = document.getElementById('pageContainer');
         this.currentComponent = null;
         
         // Adiciona listener para os botões do sidebar
         document.addEventListener('click', (e) => {
-            const button = e.target.closest('.sidebar-button');
-            if (button) {
+            const sidebarItem = e.target.closest('.sidebar-item');
+            if (sidebarItem) {
                 e.preventDefault();
-                const page = button.dataset.page;
-                // Mapeia "Visao Geral" para "/overview"
-                const route = page === "Visao Geral" ? "/overview" : `/${page.toLowerCase()}`;
+                const page = sidebarItem.dataset.page;
+                const route = page === "overview" ? "/" : `/${page}`;
                 this.navigateTo(route);
             }
         });
@@ -41,24 +42,60 @@ export default class Router {
 
         // Adiciona listener para mudanças na história do navegador
         window.addEventListener('popstate', () => this.handleRoute());
+
+        // Adiciona listener para eventos de login/logout
+        document.addEventListener('login', () => {
+            this.navigateTo('/overview');
+            this.toggleSidebar(true);
+        });
+
+        document.addEventListener('logout', () => {
+            this.navigateTo('/login');
+            this.toggleSidebar(false);
+        });
+
+        // Adiciona listener para eventos de mudança de rota
+        document.addEventListener('routeChange', (event) => {
+            if (event.detail && event.detail.route) {
+                this.navigateTo(event.detail.route);
+            }
+        });
+    }
+
+    toggleSidebar(show) {
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar) {
+            if (show) {
+                sidebar.classList.remove('d-none');
+            } else {
+                sidebar.classList.add('d-none');
+            }
+        }
     }
 
     async handleRoute() {
         const path = window.location.pathname;
         
-        // Se não estiver autenticado e não estiver na página de login, redireciona para login
-        if (path !== '/login' && !await auth.checkAuth()) {
+        // Verifica se a rota atual é protegida
+        const isProtectedRoute = this.protectedRoutes.includes(path);
+        const isAuthenticated = await auth.checkAuth();
+
+        // Se não estiver autenticado e tentar acessar rota protegida
+        if (isProtectedRoute && !isAuthenticated) {
             this.navigateTo('/login');
             return;
         }
 
-        // Se estiver autenticado e tentar acessar login, redireciona para overview
-        if (path === '/login' && await auth.checkAuth()) {
+        // Se estiver autenticado e tentar acessar login
+        if (path === '/login' && isAuthenticated) {
             this.navigateTo('/overview');
             return;
         }
 
-        const Component = this.routes[path] || this.routes['/'];
+        // Atualiza visibilidade do sidebar
+        this.toggleSidebar(isAuthenticated);
+
+        const Component = this.routes[path] || NotFound;
         
         // Cleanup previous component
         if (this.currentComponent && this.currentComponent.unmount) {
@@ -68,7 +105,7 @@ export default class Router {
         // Mount new component
         this.currentComponent = new Component();
         if (this.contentDiv) {
-            this.currentComponent.mount();
+            await this.currentComponent.mount();
             
             // Atualiza o botão ativo no sidebar
             this.updateActiveSidebarButton(path);
@@ -76,16 +113,16 @@ export default class Router {
     }
 
     updateActiveSidebarButton(path) {
-        const buttons = document.querySelectorAll('.sidebar-button');
-        buttons.forEach(button => {
-            button.classList.remove('active');
-            const buttonPage = button.dataset.page;
-            if ((path === '/' || path === '/overview') && buttonPage === 'Visao Geral') {
-                button.classList.add('active');
-            } else if (path === '/transfer' && buttonPage === 'transfer') {
-                button.classList.add('active');
-            } else if (path === '/history' && buttonPage === 'statement') {
-                button.classList.add('active');
+        const items = document.querySelectorAll('.sidebar-item');
+        items.forEach(item => {
+            item.classList.remove('active');
+            const itemPage = item.dataset.page;
+            if ((path === '/' || path === '/overview') && itemPage === 'overview') {
+                item.classList.add('active');
+            } else if (path === '/transfer' && itemPage === 'transfer') {
+                item.classList.add('active');
+            } else if (path === '/history' && itemPage === 'history') {
+                item.classList.add('active');
             }
         });
     }
@@ -96,6 +133,10 @@ export default class Router {
     }
 
     init() {
+        // Verifica autenticação inicial
+        const isAuthenticated = auth.isAuthenticated();
+        this.toggleSidebar(isAuthenticated);
+        
         // Faz a primeira verificação de rota
         this.handleRoute();
     }

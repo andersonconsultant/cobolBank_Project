@@ -1,0 +1,146 @@
+/* Layout Base */
+:root {
+    --sidebar-width: 280px;
+    --sidebar-width-tablet: 240px;
+    --header-height: 72px;
+    --spacing-lg: 24px;
+}
+
+/* Layout Principal */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+    background-color: var(--background-main);
+}
+
+/* Navegação Lateral */
+.app-nav {
+    flex: 0 0 var(--sidebar-width);
+    position: relative;
+    z-index: 1000;
+}
+
+/* Conteúdo Principal */
+.app-main {
+    flex: 1;
+    min-width: 0; /* Previne overflow em flex containers */
+    background-color: var(--background-main);
+    position: relative;
+}
+
+/* Container do Conteúdo */
+.app-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    box-sizing: border-box;
+    height: 100%;
+}
+
+/* Overlay Mobile */
+.app-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-normal),
+                visibility var(--transition-normal);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .app-nav {
+        flex-basis: var(--sidebar-width-tablet);
+    }
+}
+
+@media (max-width: 768px) {
+    .app-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
+
+    .app-main {
+        margin-left: 0;
+        padding-top: 60px; /* Espaço para o botão do menu */
+    }
+
+    .app-overlay.active {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+/* Utilitários de Layout */
+.layout-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.layout-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.layout-grow {
+    flex-grow: 1;
+}
+
+.layout-align-center {
+    align-items: center;
+}
+
+.layout-justify-center {
+    justify-content: center;
+}
+
+.layout-space-between {
+    justify-content: space-between;
+}
+
+/* Espaçamento */
+.layout-gap-sm { gap: 8px; }
+.layout-gap-md { gap: 16px; }
+.layout-gap-lg { gap: 24px; }
+
+/* Containers com diferentes larguras máximas */
+.container-sm { max-width: 600px; }
+.container-md { max-width: 800px; }
+.container-lg { max-width: 1000px; }
+.container-xl { max-width: 1200px; }
+
+/* Botão do Menu Mobile */
+.mobile-menu-button {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: var(--primary-800);
+    color: var(--text-on-primary);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-menu-button:hover {
+    background-color: var(--primary-700);
+}
+
+.mobile-menu-button:active {
+    background-color: var(--primary-900);
+}
+
+.mobile-menu-button i {
+    font-size: 1.25rem;
+} 

@@ -1,0 +1,85 @@
+/* Button Migration Styles
+   Este arquivo fornece compatibilidade entre as classes antigas e novas do design system */
+
+/* Migração da classe .btn para .cb-btn */
+.btn {
+  composes: cb-btn;
+}
+
+/* Migração de .btn-primary */
+.btn-primary {
+  composes: cb-btn--primary;
+}
+
+/* Migração de .sidebar-button */
+.sidebar-button {
+  composes: cb-btn;
+  width: 100%;
+  text-align: left;
+  padding: var(--cb-space-3) var(--cb-space-4);
+}
+
+/* Migração de .iconButton */
+.iconButton {
+  composes: cb-btn;
+  padding: var(--cb-space-1) var(--cb-space-2);
+  max-width: 40px;
+  height: 25px;
+}
+
+/* Variações adicionais de botões comumente usados */
+.cb-btn--secondary {
+  background-color: var(--cb-secondary);
+  color: white;
+}
+
+.cb-btn--secondary:hover {
+  background-color: #5a6268;
+}
+
+.cb-btn--success {
+  background-color: var(--cb-success);
+  color: white;
+}
+
+.cb-btn--success:hover {
+  background-color: #25a048;
+}
+
+.cb-btn--danger {
+  background-color: var(--cb-error);
+  color: white;
+}
+
+.cb-btn--danger:hover {
+  background-color: #c82333;
+}
+
+/* Tamanhos de botões */
+.cb-btn--sm {
+  padding: var(--cb-space-1) var(--cb-space-2);
+  font-size: var(--cb-text-xs);
+}
+
+.cb-btn--lg {
+  padding: var(--cb-space-3) var(--cb-space-6);
+  font-size: var(--cb-text-lg);
+}
+
+/* Estados de botão */
+.cb-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* Botão com ícone */
+.cb-btn--icon {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--cb-space-2);
+}
+
+.cb-btn--icon-only {
+  padding: var(--cb-space-2);
+  aspect-ratio: 1;
+} 
