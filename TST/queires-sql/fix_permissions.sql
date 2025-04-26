@@ -13,3 +13,6 @@ ALTER SCHEMA public OWNER TO operador;
 
 -- Verificar as permissões da tabela
 \dp fn_transfer
+
+-- Grant SELECT on session_pool table for COBOL pooling
+GRANT SELECT ON TABLE session_pool TO operador;
