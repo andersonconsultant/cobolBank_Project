@@ -19,7 +19,6 @@
 
 /* Header do Sidebar */
 .sidebar-header {
-    padding: var(--spacing-lg);
     display: flex;
     align-items: center;
     justify-content: center;

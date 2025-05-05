@@ -4,9 +4,10 @@ const net = require('net');
 
 // Configuração de cores para os processos
 const COLORS = {
-    FRONTEND: '\x1b[36m', // Cyan
-    BACKEND: '\x1b[35m',  // Magenta
-    SYSTEM: '\x1b[32m',   // Green
+    FRONTEND: '\x1b[36m',   // Cyan
+    BACKEND: '\x1b[35m',    // Magenta
+    COBOL: '\x1b[33m',      // Yellow
+    SYSTEM: '\x1b[32m',     // Green
     RESET: '\x1b[0m'
 };
 
@@ -24,14 +25,15 @@ function isPortInUse(port) {
 }
 
 // Função para criar um processo com output colorido
-function createProcess(name, command, args, color) {
+function createProcess(name, command, args, color, env = {}) {
     const proc = spawn(command, args, {
         stdio: 'pipe',
         shell: true,
         env: {
             ...process.env,
             FORCE_COLOR: true,
-            NODE_ENV: 'development'
+            NODE_ENV: 'development',
+            ...env
         }
     });
 
@@ -88,7 +90,7 @@ async function startDev() {
     logInfo('🚀 Iniciando ambiente de desenvolvimento...');
 
     // Verifica e libera as portas necessárias
-    const ports = [3000, 3001];
+    const ports = [3000, 3001, 4000];
     for (const port of ports) {
         if (await isPortInUse(port)) {
             logWarn(`Porta ${port} em uso. Tentando liberar...`);
@@ -98,7 +100,7 @@ async function startDev() {
         }
     }
 
-    // Inicia o backend
+    // Inicia o backend Node.js
     const backend = createProcess(
         'BACKEND',
         'npm',
@@ -106,7 +108,16 @@ async function startDev() {
         COLORS.BACKEND
     );
 
-    // Aguarda um pouco para garantir que o backend iniciou
+    // Inicia o backend COBOL
+    const cobolBackend = createProcess(
+        'COBOL',
+        'cd Rules/api && node index.js',
+        [],
+        COLORS.COBOL,
+        { PORT: '4000', BACKEND_ONLY: 'true' }
+    );
+
+    // Aguarda um pouco para garantir que os backends iniciaram
     await new Promise(resolve => setTimeout(resolve, 2000));
 
     // Inicia o frontend
@@ -122,6 +133,7 @@ async function startDev() {
         logInfo('Encerrando processos...');
         backend.kill();
         frontend.kill();
+        cobolBackend.kill();
         process.exit(0);
     });
 
@@ -130,6 +142,7 @@ async function startDev() {
         if (code !== null && code !== 0) {
             logError(new Error(`Backend encerrado com código ${code}`));
             frontend.kill();
+            cobolBackend.kill();
             process.exit(1);
         }
     });
@@ -138,19 +151,31 @@ async function startDev() {
         if (code !== null && code !== 0) {
             logError(new Error(`Frontend encerrado com código ${code}`));
             backend.kill();
+            cobolBackend.kill();
+            process.exit(1);
+        }
+    });
+
+    cobolBackend.on('exit', (code) => {
+        if (code !== null && code !== 0) {
+            logError(new Error(`COBOL Backend encerrado com código ${code}`));
+            backend.kill();
+            frontend.kill();
             process.exit(1);
         }
     });
 
     // Exibe informações úteis
     logInfo('🌐 Endpoints disponíveis:');
-    console.log(`${COLORS.SYSTEM}Frontend: http://localhost:3000`);
-    console.log(`Backend:  http://localhost:3001/api${COLORS.RESET}`);
+    console.log(`${COLORS.SYSTEM}Frontend:      http://localhost:3000`);
+    console.log(`Backend:       http://localhost:3001/api`);
+    console.log(`COBOL Backend: http://localhost:4000/api${COLORS.RESET}`);
     
     logInfo('📝 Logs:');
     console.log(`${COLORS.SYSTEM}→ Requisições em Cyan`);
     console.log(`← Respostas em Verde`);
-    console.log(`⚙ Operações COBOL em Magenta`);
+    console.log(`⚙ Backend Node.js em Magenta`);
+    console.log(`⚡ Backend COBOL em Amarelo`);
     console.log(`✖ Erros em Vermelho${COLORS.RESET}`);
 }
 

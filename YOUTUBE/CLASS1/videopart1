@@ -1,0 +1,92 @@
+1
+00:00:00,031 --> 00:00:27,622
+tem dificuldades de entrar na área de tecnologia, ou tem curiosidade, mas nunca passou por ela, tem pessoas que tem potencial, que querem realmente chegar lá. Como é que eu vou, como é que eu me vejo? Até para pessoas que não conhecem o TI, e até para pessoas que já conhecem o TI, mas está dentro da área, mas trava em algum momento, porque eles veem, a certo ponto, que são tantas coisas para ele ver, tantas variáveis,
+
+2
+00:00:27,976 --> 00:00:56,596
+chega a ser um pouco estressante de lidar com um monte de coisa, mas existe uma metodologia aí agradável de seguir, e sempre se superando e chegando aonde você quiser. Eu acredito que a gente tem a capacidade de chegar aonde a gente quiser. Vamos lá, dentro do Twitch, eu não consigo fazer duas pelo mesmo tempo, tem gente que consegue fazer isso, mas eu não consigo, então vou passar pra vocês. Basicamente, nosso primeiro tema aqui de conversa é por que você trava como dev?
+
+3
+00:00:56,849 --> 00:01:26,245
+Então, como você consegue se destravar como um desenvolvedor, como homem? Como que eu chego lá? Como é que eu chego lá? Basicamente, é nessas horas que a gente vê, caramba, será que eu tô na área certo? Será que eu tô seguindo o caminho que realmente vale a pena pra mim? Primeiro, a área de Dev é promissor, sim. Não é tão promissor quanto antigamente, quanto no tempo da pandemia, que apareceram muitas oportunidades, que as pessoas aprenderam
+
+4
+00:01:26,448 --> 00:01:56,435
+o básico ali, menos do que o básico, aprendeu a digitar alguma coisa e já foram contratados. Então, o volume de contratação na pandemia foi muito alto e muitas pessoas entraram no mercado e se deram bem, mas depois as pessoas foram cobradas por falta de conhecimento e experiência. Importante de ter uma experiência. Mas calma, não se preocupe, porque você consegue ter experiência e conhecimento, as duas coisas, sem estar dentro de uma empresa em si.
+
+5
+00:01:56,806 --> 00:02:23,975
+Eu sou um cara que... meu nome é Anderson, eu lido com tecnologia já uns... desde pequenininho, já trabalhei com desenvolvimento de games, mas 90% das vezes foi curiosidade, não tive ninguém pra me guiar. Eu fui na internet buscando vídeo aula, fui fazendo projetinhos pequenos, copiava e colava basicamente. Mas aí depois eu fui sendo xingado, caramba, como é que funciona isso aqui por trás? Aí eu fui pensando,
+
+6
+00:02:24,295 --> 00:02:54,248
+indo para trás, cada vez para o coração da parada. Como é que funciona esse negócio de verdade? Como é que isso se torna a funcionar? Então é esse passo a passo que eu vou passar para vocês. De forma simples, você pode começar executando aqui comigo. Não precisa de muita coisa. Não precisa de um computador bom. Já vou tirar essa sua dúvida. Ah, Anderson, eu estou com um computador horrível. Eu estou com um Intel Celeron. Eu estou com um computador da minha mãe que comprou um positivo,
+
+7
+00:02:54,653 --> 00:03:21,873
+Na internet chegou aqui. Então, tipo, como é que eu vou fazer minhas coisas para você estudar, para você fazer as coisas e praticar e ganhar experiência inicial para você, depois de você chegar em algum lugar, você consegue com esse computador que você está? Digo isso porque eu também tive computadores limitados. Então, eu comecei treinando e aprendendo através, como você imagina? Através do bloco de notas, justamente.
+
+8
+00:03:22,177 --> 00:03:52,045
+Eu vou abrir aqui ó, esse aqui ó, a transição. Aí vocês conseguem ver a tela? Então, é isso aqui. Você digita aqui, Oi, tudo bem? É claro que você tá digitando aqui, tá aparecendo só o texto visual pra você. Mas antigamente, as coisas não funcionavam com essas telas todas aqui, pra você clicar e arrastar. Você não tinha essa, toda a parte visual de você. Você tá vendo agora do YouTube, você vê os vídeos, rolar a tela e ver os vídeos e clicar.
+
+9
+00:03:52,349 --> 00:04:20,092
+tem uma pré-visualização, tem um vídeo, áudio, não tinha esse nível de tecnologia que a gente tem hoje. Então, como é que funciona as coisas antes disso? Aí eu vou te mostrar. Basicamente, você consegue fazer isso de uma forma bem simples. Você começa pelo bloco de notas, pode ir digitando aqui, e você pode também, eu vou, o pessoal que está assistindo na live aí, se tiver dificuldade, para ver, basicamente vocês conseguem digitar no seu CMD aqui,
+
+10
+00:04:20,362 --> 00:04:48,560
+compartilhar com vocês a tela que é a área de trabalho aí nessa área de trabalho você consegue ou abrir o bloco de nota digita aqui mesmo o bloco de nota ou você pode digitar cmd que você pode usar esse terminal aqui bem simples preto e branco onde você vai digitar os comandos aqui ou existe também um prompt, esse prompt aqui é próprio do Windows e existe o PowerShell que é usado em toda a gama praticamente de
+
+11
+00:04:49,032 --> 00:05:18,715
+sistema operacional principalmente para o Windows e Linux também tu consegue escrever em shell. Então basicamente aqui eu abri o PowerShell, pesquisei como vocês viram, eu abri e pesquisei. Aí eu cliquei em Enter e agora eu consigo digitar os comandos aqui. Basicamente os comandos mais simples que você precisa é CD. CD você digita o caminho que você quer chegar. Você pode digitar CD ou para você saber onde você está, você pode digitar LS. LS. Isso aqui vai listar todos os arquivos.
+
+12
+00:05:18,985 --> 00:05:46,981
+Mas calma, ele está aqui eternamente listando os arquivos. Você pode apertar ctrl-c e parar. Se ficarem muitos arquivos processando, você pode parar. Isso é uma navegação aqui bem intuitiva, que ela é padrão para todo e qualquer tipo de sistema. Você gerando intimidade com esse terminal, você aprendendo a digitar nele, você aprendendo a dar comandos para ele, basicamente você consegue desenvolver programas. A partir disso, você consegue desenvolver
+
+13
+00:05:47,302 --> 00:06:15,145
+qualquer tipo de programa, desde uma complexidade baixa até uma complexidade grande. Ah, eu ouvi falar, meu vizinho é dev, meu primo é dev, ele falou alguma coisa de framework. Pelo amor de Deus! Eu não consigo aprender, muito pelo contrário. O framework, ele apenas pega todo o código pronto e já digita por você. Mas aí você vai ter que ter a construção, você vai ter que montar os quebras-cabeças.
+
+14
+00:06:15,415 --> 00:06:41,555
+Basicamente, o framework facilita para você digitar, facilita para vocês entenderem. Basicamente, existe o framework que entrega soluções diferentes para situações diferentes. Por exemplo, tem frameworks que trabalham melhor em situações de streaming do YouTube. O YouTube tem o próprio framework que trabalha. Existem frameworks mais adequados para o Android, que é o Android Studio.
+
+15
+00:06:41,926 --> 00:07:08,588
+e outras soluções que você trabalha ali com tecnologias então no geral são tudo um amontoado de plugin ou amontoado de códigos prontos que já trazem uma coisa pronta pra você pra você não digitar tudo do zero mas você aprendendo a digitar o básico aqui usando o prompt você consegue chegar em qualquer lugar então primeiro eu mostrei pra você o ls que significa listar
+
+16
+00:07:08,892 --> 00:07:34,897
+Basicamente ele é bem simples. Clear, pra limpar a tela. Clear. Só você anotar no bloco de notas aí. Anotar pra você depois usar. E é basicamente o mesmo comando que você usa no Linux e em outros sistemas operacionais baseado em UNIX. Então, todos os sistemas, basicamente, hoje em dia, tem a base de sistema operacional. A base do código dele, como é que funciona. Sistema de arquivos. Isso que tu tá vendo aqui, ó. Tudo é UNIX.
+
+17
+00:07:35,183 --> 00:08:04,580
+Ah, mas Windows por que? Por que eu estou falando em UNIX? Está confundindo a minha cabeça. UNIX é a tecnologia que está por trás disso. E o UNIX você consegue ir quebrando ele por partes e estudando também se você for querer se especializar nisso. Mas basicamente, você tendo conhecimento de Windows PowerShell, você tendo conhecimento dessas ferramentas que você já tem no Windows e você explorar elas e indo cada vez mais adiante, você consegue desenvolver os programas
+
+18
+00:08:04,951 --> 00:08:34,921
+apresentar esses programas no seu portfólio. Então, basicamente, vamos lá. A gente aprendeu LS para listar. A gente aprendeu Clear para limpar. Então, a gente consegue navegar. Como que eu vou para a outra pasta? Por que que tem esse PS aqui? E por que que tá esse C dois pontos? Beleza. O básico do básico. Vou lá no arquivo. Eu vou lá no meu computador. No meu computador aqui aparece o disco C. Basicamente, o meu computador é como se tivesse vazio aqui. Não tivesse nada. Só tivesse PS. PS significa PowerShell.
+
+19
+00:08:35,225 --> 00:09:03,389
+Está bem tranquilo. Então eu vou clicar em disco C. Aí aqui eu vou digitar CD, que significa alguma coisa, mas eu simplifico como KD, CD, KD. Eu quero ir pra lá. Eu vou digitar C, dois pontos, contra barra. Depois você olha no contra barra, ele é perto do control, do teu teclado, do lado esquerdo. Aí basicamente você digita o Enter. Pronto. Você foi lá pro C. Como é que eu sei que eu fui pro C? O caminho mudou aqui. E você pode digitar LS também pra você ver os arquivos que estão aí.
+
+20
+00:09:03,727 --> 00:09:32,397
+Caramba, Anderson, apareceu vários arquivos agora diferentes. Olha, tem aqui ó, o meu tá em inglês, possivelmente o teu pode estar em português. Tipo, eu tenho meu computador aqui, eu inventei de botar em inglês, mas bom, você não precisa seguir dessa forma não, tá? Pode deixar em português. Mas geralmente os prompts, eles dão resposta em inglês também, tá? Então, já é bom você criar essa intimidade, mas basicamente, é sempre as mesmas coisas. É sempre as mesmas informações que aparecem na sua tela, é sempre a maioria, é sempre o mesmo código,
+
+21
+00:09:32,650 --> 00:09:58,672
+Então, basicamente, você consegue ver aqui que são os mesmos arquivos que estão em NetPub e Intel. Então, antigamente, você não tinha essas telas todas. Você tinha só isso aqui, essa tela preta. E não tinha essa barra aqui embaixo. Eu não vou sumir, você pode bugar. Só tinha essa tela preta, onde o seu sistema funcionava assim. Ah, tá. Beleza. Agora, o que eu faço? Eu crio o meu primeiro programa. Eu vou explicar pra vocês de uma forma bem simples.
+
+22
+00:09:59,819 --> 00:10:21,976
+Olá, pessoal. Então, esse é o canal Código Guiado. Finalizou esse primeiro vídeo, essa primeira videoaula para você aprender a criar intimidade com o terminal, aprender a criar intimidade com o seu próprio computador, como que funciona o sistema operacional, como é que funciona a base, o core, o coração da parada. No próximo vídeo, você vai desenvolver o seu primeiro programa,
+
+23
+00:10:22,280 --> 00:10:39,728
+É um programa simples, você vai ver, e a partir disso você vai conseguir ir destravando e gerando cada vez mais novas soluções, novas ideias. Seja livre, tenha criatividade, pratique, pratique e pratique. Esse é o segredo. Até a próxima. Tchau, tchau.
+

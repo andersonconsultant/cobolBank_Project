@@ -64,5 +64,10 @@
       "allowedHeaders": ["Content-Type", "Authorization", "Accept"],
       "exposedHeaders": ["Content-Length", "X-Total-Count"]
     }
+  },
+  "executables": {
+    "engine": "Rules/api/cobol/DEV/Enginev3",
+    "name": "Enginev3"
   }
+
 } 

@@ -12,62 +12,82 @@ Agora, com uma base sólida de UX e um frontend robusto, estamos prontos para da
 > *"Primeiro impressionamos, depois surpreendemos"*
 
 #### UX & Design
-- [ ] Realizar testes de usabilidade da interface atual
-- [ ] Implementar feedback dos primeiros usuários
-- [ ] Refinar animações e transições
-- [ ] Otimizar fluxos de navegação
+- [x] Realizar testes de usabilidade da interface atual
+- [x] Implementar feedback dos primeiros usuários
+- [x] Refinar animações e transições
+- [x] Otimizar fluxos de navegação
+- [x] Implementar sidebar principal com três seções essenciais
+- [x] Desenvolver sistema de feedback visual para operações
+- [x] Criar interface responsiva mobile-first
 
 #### Frontend
-- [ ] Implementar lazy loading para melhor performance
-- [ ] Adicionar feedback visual para estados de loading
-- [ ] Criar componentes para tratamento de erros
-- [ ] Desenvolver modo offline básico
+- [x] Implementar lazy loading para melhor performance
+- [x] Adicionar feedback visual para estados de loading
+- [x] Criar componentes para tratamento de erros
+- [x] Desenvolver modo offline básico
+- [x] Implementar sistema de autenticação JWT
+- [x] Configurar proxy reverso para API
+- [x] Adicionar tratamento específico para rate limit
+- [x] Implementar sistema de retry inteligente
 
 #### Dados & Mockups
-- [ ] Expandir dados simulados para mais cenários
-- [ ] Criar simulações de latência realistas
-- [ ] Implementar validações client-side completas
-- [ ] Documentar todos os estados possíveis da UI
+- [x] Expandir dados simulados para mais cenários
+- [x] Criar simulações de latência realistas
+- [x] Implementar validações client-side completas
+- [x] Documentar todos os estados possíveis da UI
+- [x] Desenvolver camada de mock para testes
+- [x] Implementar interfaces de dados tipadas
 
 ### Fase 2: Preparação para Integração
 > *"Construindo a ponte entre o moderno e o legado"*
 
 #### Arquitetura
-- [ ] Separar configurações de ambiente
-- [ ] Preparar estrutura para múltiplos backends
-- [ ] Implementar sistema de feature flags
-- [ ] Criar ambiente de staging
+- [x] Separar configurações de ambiente
+- [x] Preparar estrutura para múltiplos backends
+- [x] Implementar sistema de feature flags
+- [x] Criar ambiente de staging
+- [x] Configurar dois modos de operação (integrado e backend-only)
+- [x] Implementar scripts de gerenciamento e monitoramento
 
 #### API & Integração
-- [ ] Documentar todos os endpoints necessários
-- [ ] Criar interceptors para tratamento de erros
-- [ ] Implementar sistema de retry
-- [ ] Desenvolver mecanismos de fallback
+- [x] Documentar todos os endpoints necessários
+- [x] Criar interceptors para tratamento de erros
+- [x] Implementar sistema de retry
+- [x] Desenvolver mecanismos de fallback
+- [x] Implementar serviço de saldo com integração COBOL
+- [x] Configurar comunicação via proxy reverso
+- [x] Implementar rate limiting (10 req/min)
 
 #### Segurança
-- [ ] Implementar rate limiting
-- [ ] Adicionar validações de segurança
-- [ ] Configurar CORS adequadamente
-- [ ] Preparar monitoramento de segurança
+- [x] Implementar rate limiting
+- [x] Adicionar validações de segurança
+- [x] Configurar CORS adequadamente
+- [x] Preparar monitoramento de segurança
+- [x] Implementar headers de segurança via Helmet
+- [x] Adicionar validação de inputs com express-validator
+- [x] Configurar limite de payload (10kb)
 
 ### Fase 3: Integração COBOL
 > *"Trazendo o poder do legado para o presente"*
 
 #### Backend COBOL
-- [ ] Configurar ambiente isolado para COBOL
-- [ ] Implementar endpoints de teste
-- [ ] Criar logs específicos para debugging
-- [ ] Documentar processo de deployment
+- [x] Configurar ambiente isolado para COBOL
+- [x] Implementar endpoints de teste
+- [x] Criar logs específicos para debugging
+- [x] Documentar processo de deployment
+- [x] Implementar protocolo de comunicação simplificado
+- [x] Desenvolver comandos básicos (START, SALDO, EXTRATO)
+- [x] Configurar respostas padronizadas
 - [ ] Desenvolver sistema de filas para gerenciamento de buffer
 - [ ] Implementar particionamento de dados para processamento em lotes
 - [ ] Criar mecanismos de controle de memória e buffer
 - [ ] Validar limites de processamento por operação
 
 #### Integração
-- [ ] Implementar integração gradual por feature
-- [ ] Criar sistema de fallback para dados mockados
-- [ ] Desenvolver monitoria de performance
-- [ ] Estabelecer métricas de sucesso
+- [x] Implementar integração gradual por feature
+- [x] Criar sistema de fallback para dados mockados
+- [x] Desenvolver monitoria de performance
+- [x] Estabelecer métricas de sucesso
 - [ ] Implementar API de gerenciamento de filas COBOL
 - [ ] Desenvolver controle de status de processamento
 - [ ] Criar sistema de recuperação de falhas no processamento
@@ -87,10 +107,50 @@ Agora, com uma base sólida de UX e um frontend robusto, estamos prontos para da
 - [ ] Criar alertas para limites de processamento
 
 #### Monitoramento
-- [ ] Configurar alertas automáticos
-- [ ] Implementar logging centralizado
+- [x] Configurar alertas automáticos
+- [x] Implementar logging centralizado
 - [ ] Criar dashboards de monitoramento
 - [ ] Estabelecer processos de incident response
+- [ ] Implementar monitoramento em tempo real
+- [ ] Desenvolver sistema de métricas detalhadas
+
+#ESTOU ORGANIZANDO PARA REESCREVER COM A IDEIA DE ESCALAR COM APACHE CAMEL
+ Escalonamento com Apache Camel
+Para garantir que nossa aplicação possa crescer de forma sustentável e responder à demanda de forma eficiente, utilizamos o Apache Camel como orquestrador de rotas, aliado a estratégias de escalabilidade horizontal e monitoramento inteligente.
+
+📌 Como funciona o escalonamento com Camel
+Ao centralizar a lógica de integração no Apache Camel, conseguimos aplicar técnicas de escalabilidade que não dependem do core da aplicação, mas sim da capacidade de processar eventos e requisições de forma paralela e distribuída.
+
+🔄 Escalonamento automático
+Utilizamos ferramentas como:
+
+Kubernetes + Camel K: Para empacotar e executar rotas como serviços desacoplados, com autoscaling baseado em métricas como CPU, memória ou número de mensagens em fila.
+
+KEDA (Kubernetes Event-driven Autoscaling): Permite escalar rotas do Camel com base em gatilhos como:
+
+Mensagens pendentes no Kafka, ActiveMQ ou Amazon SQS.
+
+Requisições HTTP simultâneas.
+
+Eventos do banco de dados ou fila de tarefas COBOL.
+
+🧠 Benefícios
+Resiliência: Se uma rota for sobrecarregada, novos pods são criados automaticamente.
+
+Desempenho contínuo: A resposta ao usuário final não degrada mesmo em horários de pico.
+
+Isolamento: Cada rota crítica pode ser escalada individualmente, sem impactar os demais serviços.
+
+🧰 Monitoramento integrado
+Para dar suporte a esse escalonamento, usamos:
+
+Prometheus + Grafana: Para visualizar métricas das rotas em tempo real.
+
+Alertmanager: Para notificar o time de TI em caso de falhas ou gargalos nas rotas.
+
+Centralização de logs com Elastic Stack: Permite diagnósticos rápidos e eficazes, fundamentais em ambientes escaláveis.
+
+
 
 ## 📋 Guias de Referência
 
@@ -99,6 +159,34 @@ Agora, com uma base sólida de UX e um frontend robusto, estamos prontos para da
 - [GUIDE-CLIENT.md](./client/GUIDE-CLIENT.md) - Documentação do frontend
 - [GUIDE-API.md](./Rules/api/GUIDE-API.md) - Documentação da API
 - [GUIDE-RULES.md](./Rules/GUIDE-RULES.md) - Regras de negócio
+
+## 📝 TODOs por Seção
+
+### Backend (TODO-BACK.md)
+- [ ] Documentação completa das APIs
+- [ ] Implementação de JWT e autenticação avançada
+- [ ] Sistema de filas para processamento COBOL
+- [ ] Testes automatizados e ambiente de staging
+
+### COBOL Server (TODO-COBOL-SERVER.md)
+- [ ] Robustez do processo (reconexão, timeout, retry)
+- [ ] Tratamento de erros estruturado
+- [ ] Monitoramento básico do processo COBOL
+- [ ] Melhorias futuras (escala, balanceamento, CI/CD)
+
+### Frontend (GUIDE-CLIENT.md)
+- [x] Estrutura base de serviços e componentes
+- [x] Implementação com dados mock
+- [x] Integração com API real
+- [x] Validação e tratamento de erros
+
+### UX (GUIDE-UX.md)
+- [x] Estrutura base (sidebar, login, dashboard)
+- [x] Operações básicas (transferências, saldo, extrato)
+- [ ] Melhorias (PIX, comprovantes, filtros)
+- [ ] Recursos adicionais (agendamentos, favoritos)
+
+> *Para detalhes completos de cada seção, consulte os respectivos arquivos de referência.*
 
 ## 🤝 Contribuindo
 
@@ -111,9 +199,9 @@ Cada tarefa neste TODO representa um passo em nossa jornada. Ao trabalhar em uma
 
 ## 📊 Progresso
 
-- Fase 1: 🟡 Em andamento
-- Fase 2: ⚪ Planejada
-- Fase 3: ⚪ Planejada
+- Fase 1: 🟢 Concluída
+- Fase 2: 🟢 Concluída
+- Fase 3: 🟡 Em andamento
 - Fase 4: ⚪ Planejada
 
 ---
