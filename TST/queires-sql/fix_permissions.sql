@@ -12,7 +12,7 @@ GRANT USAGE, SELECT ON SEQUENCE fn_transfer_id_seq TO operador;
 ALTER SCHEMA public OWNER TO operador;
 
 -- Verificar as permissões da tabela
-\dp fn_transfer
+\dp log_cobol
 
 -- Grant SELECT on session_pool table for COBOL pooling
-GRANT SELECT ON TABLE session_pool TO operador;
+GRANT SELECT ON TABLE log_cobol TO operador;

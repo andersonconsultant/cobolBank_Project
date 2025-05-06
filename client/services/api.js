@@ -1,4 +1,6 @@
 // api.js
+import performanceLogger from './logger.js';
+
 class ApiService {
     constructor() {
         this.baseUrl = this.getBaseUrl();
@@ -11,10 +13,9 @@ class ApiService {
     }
 
     getBaseUrl() {
-        // Usando a URL base do site sem /api pois já está incluído nos endpoints
+        const protocol = window.location.protocol;
         const host = window.location.hostname;
         const port = window.location.port;
-        const protocol = window.location.protocol;
         return `${protocol}//${host}${port ? ':' + port : ''}`;
     }
 
@@ -27,6 +28,10 @@ class ApiService {
             'Accept': 'application/json',
             ...(token && { 'Authorization': `Bearer ${token}` })
         };
+
+        // Start performance timer
+        const operationName = `${options.method || 'GET'} ${endpoint}`;
+        performanceLogger.startTimer(operationName);
 
         console.log('Fazendo requisição para:', url);
         console.log('Opções:', { ...options, headers: defaultHeaders });
@@ -43,26 +48,30 @@ class ApiService {
             const text = await response.text();
             console.log('Resposta da API (texto):', text);
 
+            let data;
+            
             try {
-                const data = text ? JSON.parse(text) : {};
+                data = text ? JSON.parse(text) : {};
                 console.log('Resposta da API (JSON):', data);
                 
                 if (!response.ok) {
                     throw new Error(data.message || `HTTP error! status: ${response.status}`);
                 }
 
+                // Record successful response time
+                performanceLogger.endTimer(operationName);
                 return data;
-            } catch (e) {
-                console.error('Erro ao fazer parse do JSON:', e);
+            } catch (parseError) {
+                performanceLogger.logError(operationName, new Error(`Invalid JSON response: ${text}`));
                 throw new Error(`Invalid JSON response: ${text}`);
             }
         } catch (error) {
-            console.error('API request failed:', error);
+            performanceLogger.logError(operationName, error);
             throw error;
         }
     }
 
-    // Autenticação
+    // Authentication
     async login(credentials) {
         return this.request(this.endpoints.login, {
             method: 'POST',
@@ -70,7 +79,7 @@ class ApiService {
         });
     }
 
-    // Transações
+    // Transactions
     async createTransaction(transactionData) {
         return this.request(this.endpoints.transaction, {
             method: 'POST',
@@ -78,7 +87,7 @@ class ApiService {
         });
     }
 
-    // Extrato
+    // Statement
     async getStatement(params) {
         const queryString = new URLSearchParams(params).toString();
         return this.request(`${this.endpoints.statement}?${queryString}`);

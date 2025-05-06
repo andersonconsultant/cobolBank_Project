@@ -29,6 +29,7 @@ Agora, com uma base sólida de UX e um frontend robusto, estamos prontos para da
 - [x] Configurar proxy reverso para API
 - [x] Adicionar tratamento específico para rate limit
 - [x] Implementar sistema de retry inteligente
+- [x] Centralizar logger de performance no frontend
 
 #### Dados & Mockups
 - [x] Expandir dados simulados para mais cenários
@@ -48,6 +49,9 @@ Agora, com uma base sólida de UX e um frontend robusto, estamos prontos para da
 - [x] Criar ambiente de staging
 - [x] Configurar dois modos de operação (integrado e backend-only)
 - [x] Implementar scripts de gerenciamento e monitoramento
+- [x] Centralizar configurações em config.js com suporte a env vars
+- [x] Remover duplicidade de configurações (config.json)
+- [x] Organizar estrutura de utils e logger no backend
 
 #### API & Integração
 - [x] Documentar todos os endpoints necessários
@@ -57,6 +61,18 @@ Agora, com uma base sólida de UX e um frontend robusto, estamos prontos para da
 - [x] Implementar serviço de saldo com integração COBOL
 - [x] Configurar comunicação via proxy reverso
 - [x] Implementar rate limiting (10 req/min)
+
+#### Logging & Monitoramento
+- [x] Implementar estrutura base de logging
+- [x] Centralizar logger no diretório Rules/api/utils/logger
+- [x] Separar responsabilidades entre loggers (console, performance)
+- [x] Implementar log server com health check
+- [x] Configurar log de requests e responses
+- [x] Adicionar suporte a log levels (error, warn, info, debug)
+- [x] Implementar buffer de logs com limite de 100 entradas
+- [ ] Implementar rotação de logs
+- [ ] Adicionar compressão de logs antigos
+- [ ] Configurar exportação de logs para análise
 
 #### Segurança
 - [x] Implementar rate limiting
@@ -105,14 +121,17 @@ Agora, com uma base sólida de UX e um frontend robusto, estamos prontos para da
 - [ ] Implementar balanceamento de carga para filas
 - [ ] Desenvolver métricas de uso de buffer
 - [ ] Criar alertas para limites de processamento
+- [ ] Implementar agregação de logs para análise de performance
 
 #### Monitoramento
 - [x] Configurar alertas automáticos
 - [x] Implementar logging centralizado
+- [x] Separar logs por componente (FRONTEND, BACKEND, COBOL)
 - [ ] Criar dashboards de monitoramento
 - [ ] Estabelecer processos de incident response
 - [ ] Implementar monitoramento em tempo real
 - [ ] Desenvolver sistema de métricas detalhadas
+- [ ] Integrar logs com sistema de análise (ELK/Grafana)
 
 #ESTOU ORGANIZANDO PARA REESCREVER COM A IDEIA DE ESCALAR COM APACHE CAMEL
  Escalonamento com Apache Camel
@@ -150,8 +169,6 @@ Alertmanager: Para notificar o time de TI em caso de falhas ou gargalos nas rota
 
 Centralização de logs com Elastic Stack: Permite diagnósticos rápidos e eficazes, fundamentais em ambientes escaláveis.
 
-
-
 ## 📋 Guias de Referência
 
 - [README.md](./README.md) - Visão geral do projeto
@@ -159,6 +176,7 @@ Centralização de logs com Elastic Stack: Permite diagnósticos rápidos e efic
 - [GUIDE-CLIENT.md](./client/GUIDE-CLIENT.md) - Documentação do frontend
 - [GUIDE-API.md](./Rules/api/GUIDE-API.md) - Documentação da API
 - [GUIDE-RULES.md](./Rules/GUIDE-RULES.md) - Regras de negócio
+- [GUIDE-LOGGER.md](./Rules/api/utils/logger/README.md) - Documentação do sistema de logs
 
 ## 📝 TODOs por Seção
 

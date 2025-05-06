@@ -54,4 +54,5 @@ class AuthService {
     }
 }
 
+// Export a singleton instance
 export default new AuthService(); 

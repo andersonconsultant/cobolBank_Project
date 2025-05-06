@@ -9,9 +9,9 @@
     "start:backend": "cd Rules/api && PORT=3001 BACKEND_ONLY=true node index.js",
     "start:frontend": "cd Rules && npm run dev",
     "start:all": "node scripts/start.js",
-    "dev": "node scripts/dev.js",
-    "test:routes": "node scripts/test-routes.js",
-    "check-status": "node scripts/check-status.js",
+    "dev": "node scripts/dev/dev-server.js",
+    "test:routes": "node scripts/dev/test-routes.js",
+    "check-status": "node scripts/dev/check-status.js",
     "build": "echo \"No build step yet\""
   },
   "author": "",
@@ -19,10 +19,11 @@
   "dependencies": {
     "concurrently": "^8.0.1",
     "cors": "^2.8.5",
-    "express": "^4.18.2",
+    "express": "^4.21.2",
     "express-rate-limit": "^7.5.0",
     "express-validator": "^7.2.1",
-    "helmet": "^8.1.0"
+    "helmet": "^8.1.0",
+    "node-fetch": "^2.7.0"
   },
   "devDependencies": {
     "body-parser": "^1.20.2",

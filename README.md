@@ -1,5 +1,10 @@
 # 🔄 CobolBank: Bridging Legacy to Modern Without Disruption
 
+🔄 Este repositório é a interface e gateway do projeto **CobolBank**. Para acessar o motor de regras legado COBOL:
+
+👉 [Acesse o repositório do Engine de Regras COBOL](https://github.com/andersonconsultant/cobolBank_Rules)
+
+
 *[English](#english) | [Português](#português)*
 
 ---
